@@ -56,5 +56,12 @@ nautilus .
 sudo dracut --force
 
 
+sudo sed -i 's/^NAME=.*/NAME=MoxOS/' /etc/os-release
+sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS v1.2/' /etc/os-release
+
+sudo hostnamectl set-hostname "MoxOS v1.2"
+
+
+
 
 
