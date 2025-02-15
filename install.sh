@@ -1,12 +1,8 @@
-# 
+# // bin bash
 
 echo "Welcome To MoxOS v1.2!"
 
-MY_USR = $(whoami)
-
-sudo passwd $MY_USR
-
-sudo dnf -y update
+sudo passwd $(whoami)
 
 # ------------------  APPLICATIONS -------------------
 
