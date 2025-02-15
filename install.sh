@@ -45,6 +45,9 @@ sudo rm -r /usr/share/pixmaps
 sudo mv pixmaps /usr/share/pixmaps
 sudo rm -f pixmaps.zip
 
+sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "/usr/share/plymouth/themes/spinner/watermark.png"
+
+
 cd ~
 
 cd /usr/share/plymouth/themes/bgrt
