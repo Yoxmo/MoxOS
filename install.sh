@@ -6,6 +6,8 @@ sudo passwd "$(logname)"
 
 rm -rf ~/.local/share/keyrings
 
+sudo systemctl disable --now dnf-makecache.timer
+sudo systemctl mask dnf-makecache.service
 
 # ------------------  APPLICATIONS -------------------
 
