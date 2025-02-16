@@ -79,7 +79,6 @@ install_extension() {
 create_pwa() {
     url=$1
     echo "Creating PWA for URL: $url"
-    google-chrome --profile-directory=Default --app="$url"
     
     shortcut_name="${url//[:\/]/_}.desktop"
     shortcut_path="$HOME/Desktop/$shortcut_name"
