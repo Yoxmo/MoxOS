@@ -49,11 +49,17 @@ sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "/usr/share/plymouth/themes/
 
 nautilus .
 
-sudo plymouth-set-default-theme bgrt
-
+sudo dracut -f
 
 sudo sed -i 's/^NAME=.*/NAME=MoxOS/' /etc/os-release
 sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS/' /etc/os-release
+
+sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
+sudo sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="rhgb quiet logo.nologo"/' /etc/default/grub
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+
 
 sudo hostnamectl set-hostname "MoxOS"
 
@@ -61,5 +67,4 @@ sudo dnf autoremove
 sudo dnf update -y
 
 rm -rf ~/.local/share/recently-used.xbel
-sudo history -c
-rm ~/.zsh_history
+history -c
