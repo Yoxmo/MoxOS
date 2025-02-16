@@ -8,6 +8,13 @@ sudo passwd $(whoami)
 
 sudo dnf remove -y firefox
 sudo dnf remove -y gnome-software
+sudo dnf remove libreoffice*
+
+rm -rf ~/.config/libreoffice
+rm -rf ~/.libreoffice
+
+sudo dnf autoremove
+
 
 sudo flatpak install -y flathub com.mattjakeman.ExtensionManager
 
@@ -59,6 +66,13 @@ sudo sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="rhgb quiet logo.nologo
 
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+
+
+
+#https://youtube.com
+#http://chatgpt.com
+#https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
+#https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom?hl=en
 
 sudo hostnamectl set-hostname "MoxOS"
 
