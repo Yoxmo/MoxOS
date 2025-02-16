@@ -72,7 +72,7 @@ sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 #https://youtube.com
 #http://chatgpt.com
 #https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
-#https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom?hl=en
+#https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
 
 sudo hostnamectl set-hostname "MoxOS"
 
