@@ -4,6 +4,9 @@ echo "Welcome To MoxOS v1.2!"
 
 sudo passwd "$(logname)"
 
+rm -rf ~/.local/share/keyrings
+
+
 # ------------------  APPLICATIONS -------------------
 
 sudo dnf remove -y firefox
