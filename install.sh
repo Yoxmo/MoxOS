@@ -65,11 +65,11 @@ echo "[+] Done now installing hostnames..."
 sudo sed -i 's/^NAME=.*/NAME="MoxOS"/' /etc/os-release
 sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS v1.12"/' /etc/os-release
 
-sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
-sudo sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="rhgb quiet"/' /etc/default/grub
+#sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
+#sudo sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="rhgb quiet"/' /etc/default/grub
 
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+#sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+#sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 sudo hostnamectl set-hostname "MoxOS"
 
