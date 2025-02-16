@@ -2,18 +2,18 @@
 
 echo "Welcome To MoxOS v1.2!"
 
-sudo passwd $(whoami)
+sudo passwd fedora
 
 # ------------------  APPLICATIONS -------------------
 
 sudo dnf remove -y firefox
 sudo dnf remove -y gnome-software
-sudo dnf remove libreoffice*
+sudo dnf remove libreoffice* -y
 
 rm -rf ~/.config/libreoffice
 rm -rf ~/.libreoffice
 
-sudo dnf autoremove
+sudo dnf autoremove -y
 
 
 sudo flatpak install -y flathub com.mattjakeman.ExtensionManager
@@ -25,8 +25,9 @@ sudo dnf install -y brightnessctl
 sudo notify-send "Apps Updated" "brightnessctl SET 10%+ -10%"
 
 
-sudo flatpak override --user --filesystem=~/.local/share/applications/ --filepath=~/.local/share/icons
+flatpak override --user --filesystem=~/.local/share/applications/ --filesystem=~/.local/share/icons
 
+echo "[-] Done now installing icons..."
 
 # -------------------  ICON  ---------------------
 cd ~
@@ -35,6 +36,8 @@ cd Tela-circle-icon-theme && bash install.sh
 cd ..
 gnome-tweaks
 sudo rm -r Tela-circle-icon-theme
+
+echo "[-] Done now installing pixmaps..."
 
 # --------------------- PIXMAPS -------------------
 
@@ -54,6 +57,11 @@ nautilus .
 
 sudo dracut -f
 
+echo "[+] Done now installing hostnames..."
+
+# --------------------- HOSTNAME -------------------
+
+
 sudo sed -i 's/^NAME=.*/NAME="MoxOS"/' /etc/os-release
 sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS v1.12"/' /etc/os-release
 
@@ -63,66 +71,19 @@ sudo sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="rhgb quiet logo.nologo
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
-
-#!/bin/bash
-
-install_extension() {
-    extension_id=$1
-    echo "Installing extension: $extension_id"
-    google-chrome --install-extension="$extension_id"
-}
-
-create_pwa() {
-    url=$1
-    echo "Creating PWA for URL: $url"
-    
-    shortcut_name="${url//[:\/]/_}.desktop"
-    shortcut_path="$HOME/Desktop/$shortcut_name"
-
-    echo "[Desktop Entry]" > "$shortcut_path"
-    echo "Version=1.0" >> "$shortcut_path"
-    echo "Name=$url" >> "$shortcut_path"
-    echo "Exec=google-chrome --profile-directory=Default --app=$url" >> "$shortcut_path"
-    echo "Icon=google-chrome" >> "$shortcut_path"
-    echo "Terminal=false" >> "$shortcut_path"
-    echo "Type=Application" >> "$shortcut_path"
-
-    chmod +x "$shortcut_path"
-    echo "PWA shortcut created at $shortcut_path"
-}
-
-urls=(
-    "https://youtube.com"
-    "http://chatgpt.com"
-    "https://drive.google.com"
-    "https://mail.google.com"
-    "https://docs.google.com"
-    "https://sheets.google.com"
-    "https://slides.google.com"
-)
-
-extensions=(
-    "aefkmifgmaafnojlojpnekbpbmjiiogg"
-    "cmedhionkhpnakcndndgjdbohmhepckk"
-    "apdfllckaahabafndbhieahigkjlhalf"
-)
-
-for ext_id in "${extensions[@]}"; do
-    install_extension "$ext_id"
-done
-
-for url in "${urls[@]}"; do
-    create_pwa "$url"
-done
-
-echo "Script execution completed."
-
-
-
 sudo hostnamectl set-hostname "MoxOS"
 
-sudo dnf autoremove
-sudo dnf update -y
+echo "[-] Done with Hostnames..."
+
+# --------------------- PWA INSTALL -------------------
+
+google-chrome youtube.com
+google-chrome chatgpt.com
+
+google-chrome https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
+google-chrome https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
+
+echo "[-] PWA Script execution completed."
 
 rm -rf ~/.local/share/recently-used.xbel
 history -c
