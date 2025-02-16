@@ -1,4 +1,4 @@
-# // bin bash
+# // .bin .bash - /bin/bash
 
 echo "Welcome To MoxOS v1.2!"
 
@@ -68,11 +68,44 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 
+install_extension() {
+    extension_id=$1
+    echo "Installing extension: $extension_id"
+    google-chrome --install-extension="$extension_id"
+}
 
-#https://youtube.com
-#http://chatgpt.com
-#https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
-#https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
+create_pwa() {
+    url=$1
+    echo "Creating PWA for URL: $url"
+    google-chrome --profile-directory=Default --app="$url"
+}
+
+urls=(
+    "https://youtube.com"
+    "http://chatgpt.com"
+    "https://drive.google.com"
+    "https://mail.google.com"
+    "https://docs.google.com"
+    "https://sheets.google.com"
+    "https://slides.google.com"
+)
+
+extensions=(
+    "aefkmifgmaafnojlojpnekbpbmjiiogg"  # Popup Blocker Strict
+    "cmedhionkhpnakcndndgjdbohmhepckk"  # Adblock for YouTube
+    "apdfllckaahabafndbhieahigkjlhalf"  # Grammarly
+)
+
+for ext_id in "${extensions[@]}"; do
+    install_extension "$ext_id"
+done
+
+for url in "${urls[@]}"; do
+    create_pwa "$url"
+done
+
+echo "Script execution completed."
+
 
 sudo hostnamectl set-hostname "MoxOS"
 
