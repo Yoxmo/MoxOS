@@ -47,16 +47,15 @@ cd ~
 
 sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "/usr/share/plymouth/themes/spinner/watermark.png"
 
-cd /usr/share/plymouth/themes/bgrt
 nautilus .
 
 sudo plymouth-set-default-theme bgrt
 
 
 sudo sed -i 's/^NAME=.*/NAME=MoxOS/' /etc/os-release
-sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS v1.2/' /etc/os-release
+sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS/' /etc/os-release
 
-sudo hostnamectl set-hostname "MoxOS v1.2"
+sudo hostnamectl set-hostname "MoxOS"
 
 sudo dnf autoremove
 sudo dnf update -y
