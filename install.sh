@@ -68,6 +68,8 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 
+#!/bin/bash
+
 install_extension() {
     extension_id=$1
     echo "Installing extension: $extension_id"
@@ -78,6 +80,20 @@ create_pwa() {
     url=$1
     echo "Creating PWA for URL: $url"
     google-chrome --profile-directory=Default --app="$url"
+    
+    shortcut_name="${url//[:\/]/_}.desktop"
+    shortcut_path="$HOME/Desktop/$shortcut_name"
+
+    echo "[Desktop Entry]" > "$shortcut_path"
+    echo "Version=1.0" >> "$shortcut_path"
+    echo "Name=$url" >> "$shortcut_path"
+    echo "Exec=google-chrome --profile-directory=Default --app=$url" >> "$shortcut_path"
+    echo "Icon=google-chrome" >> "$shortcut_path"
+    echo "Terminal=false" >> "$shortcut_path"
+    echo "Type=Application" >> "$shortcut_path"
+
+    chmod +x "$shortcut_path"
+    echo "PWA shortcut created at $shortcut_path"
 }
 
 urls=(
@@ -91,9 +107,9 @@ urls=(
 )
 
 extensions=(
-    "aefkmifgmaafnojlojpnekbpbmjiiogg"  # Popup Blocker Strict
-    "cmedhionkhpnakcndndgjdbohmhepckk"  # Adblock for YouTube
-    "apdfllckaahabafndbhieahigkjlhalf"  # Grammarly
+    "aefkmifgmaafnojlojpnekbpbmjiiogg"
+    "cmedhionkhpnakcndndgjdbohmhepckk"
+    "apdfllckaahabafndbhieahigkjlhalf"
 )
 
 for ext_id in "${extensions[@]}"; do
@@ -105,6 +121,7 @@ for url in "${urls[@]}"; do
 done
 
 echo "Script execution completed."
+
 
 
 sudo hostnamectl set-hostname "MoxOS"
