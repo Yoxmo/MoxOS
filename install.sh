@@ -53,6 +53,7 @@ cd ~
 sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "/usr/share/plymouth/themes/spinner/watermark.png"
 sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "~/Desktop/logo.png"
 
+cd "/usr/share/plymouth/themes/"
 nautilus .
 
 sudo dracut -f
