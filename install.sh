@@ -53,6 +53,7 @@ sudo rm -f pixmaps.zip
 cd ~
 
 sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "/usr/share/plymouth/themes/spinner/watermark.png"
+sudo cp "/usr/share/pixmaps/fedora-logo-sprite.png" "/home/Desktop/logo.png"
 
 nautilus .
 
