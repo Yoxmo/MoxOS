@@ -27,11 +27,6 @@ sudo notify-send "Apps Updated" "brightnessctl SET 10%+ -10%"
 
 sudo flatpak override --user --filesystem=~/.local/share/applications/ --filepath=~/.local/share/icons
 
-# ------------------  NAMEs -------------------
-
-sudo sed -i 's/^Name=.*/Name=Word Docs/' /usr/share/applications/libreoffice-writer.desktop
-sudo sed -i 's/^Name=.*/Name=Spreadsheet/' /usr/share/applications/libreoffice-calc.desktop
-sudo sed -i 's/^Name=.*/Name=Presentation/' /usr/share/applications/libreoffice-impress.desktop
 
 # -------------------  ICON  ---------------------
 cd ~
