@@ -2,7 +2,7 @@
 
 echo "Welcome To MoxOS v1.2!"
 
-sudo passwd fedora
+sudo passwd "$(logname)"
 
 # ------------------  APPLICATIONS -------------------
 
@@ -25,7 +25,7 @@ sudo dnf install -y brightnessctl
 sudo notify-send "Apps Updated" "brightnessctl SET 10%+ -10%"
 
 
-flatpak override --user --filesystem=~/.local/share/applications/ --filesystem=~/.local/share/icons
+sudo -u "$(logname)" flatpak override --user --filesystem=~/.local/share/applications/ --filesystem=~/.local/share/icons
 
 echo "[-] Done now installing icons..."
 
@@ -34,7 +34,7 @@ cd ~
 git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
 cd Tela-circle-icon-theme && bash install.sh
 cd ..
-gnome-tweaks
+sudo -u "$(logname)" gnome-tweaks
 sudo rm -r Tela-circle-icon-theme
 
 echo "[-] Done now installing pixmaps..."
@@ -64,7 +64,7 @@ echo "[+] Done now installing hostnames..."
 
 
 sudo sed -i 's/^NAME=.*/NAME="MoxOS"/' /etc/os-release
-sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME=MoxOS v1.12"/' /etc/os-release
+sudo sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="MoxOS v1.12"/' /etc/os-release
 
 #sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
 #sudo sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="rhgb quiet"/' /etc/default/grub
@@ -78,11 +78,11 @@ echo "[-] Done with Hostnames..."
 
 # --------------------- PWA INSTALL -------------------
 
-google-chrome youtube.com
-google-chrome chatgpt.com
+sudo -u "$(logname)" google-chrome youtube.com
+sudo -u "$(logname)" google-chrome chatgpt.com
 
-google-chrome https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
-google-chrome https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
+sudo -u "$(logname)" google-chrome https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
+sudo -u "$(logname)" google-chrome https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
 
 echo "[-] PWA Script execution completed."
 
