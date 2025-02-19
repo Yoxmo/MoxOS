@@ -21,18 +21,16 @@ rm -rf ~/.libreoffice
 sudo dnf autoremove -y
 
 
-sudo flatpak install -y flathub com.mattjakeman.ExtensionManager
-
 sudo dnf install -y gnome-tweaks
 sudo dnf install -y google-chrome-stable
 sudo dnf install -y brightnessctl 
 
-sudo notify-send "Apps Updated" "brightnessctl SET 10%+ -10%"
 
+sudo notify-send "Apps Updated" "brightnessctl SET 10%+ -10%"
 
 sudo -u "$(logname)" flatpak override --user --filesystem=~/.local/share/applications/ --filesystem=~/.local/share/icons
 
-echo "[-] Done now installing icons..."
+echo "[-] Done -> now installing icons..."
 
 # -------------------  ICON  ---------------------
 cd ~
@@ -42,7 +40,7 @@ cd ..
 sudo -u "$(logname)" gnome-tweaks
 sudo rm -r Tela-circle-icon-theme
 
-echo "[-] Done now installing pixmaps..."
+echo "[-] Done -> now installing pixmaps..."
 
 # --------------------- PIXMAPS -------------------
 
@@ -63,7 +61,7 @@ nautilus .
 
 sudo dracut -f
 
-echo "[+] Done now installing hostnames..."
+echo "[+] Done ->  now installing hostnames..."
 
 # --------------------- HOSTNAME -------------------
 
@@ -81,6 +79,26 @@ sudo hostnamectl set-hostname "MoxOS"
 
 echo "[-] Done with Hostnames..."
 
+# --------------------- APPS INSTALL ------------------
+
+sudo curl -LO https://github.com/Yoxmo/MoxOS/releases/download/pkg/Extensions.zip
+unzip Extensions.zip
+
+gnome-extensions install Compiz@Hermes.zip
+gnome-extensions install AppHide@Lynithdev.zip
+gnome-extensions install BlurShell@Aunetx
+gnome-extensions install DashDock@Micxgx.zip
+gnome-extensions install LogoMenu@Aryan20.zip
+
+gnome-extensions enable app-hider@lynith.dev
+gnome-extensions enable logomenu@aryan_k
+gnome-extensions enable compiz-windows-effect@hermes83.github.com
+gnome-extensions enable dash-to-dock@micxgx.gmail.com
+gnome-extensions enable blur-my-shell@aunetx
+
+echo "[-] Done with Apps... Finsih PWA and reboot."
+
+
 # --------------------- PWA INSTALL -------------------
 
 sudo -u "$(logname)" google-chrome youtube.com
@@ -89,7 +107,9 @@ sudo -u "$(logname)" google-chrome chatgpt.com
 sudo -u "$(logname)" google-chrome https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
 sudo -u "$(logname)" google-chrome https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
 
-echo "[-] PWA Script execution completed."
+echo "[-] PWA Script execution completed. Rebooting now..."
 
 rm -rf ~/.local/share/recently-used.xbel
 history -c
+
+reboot
