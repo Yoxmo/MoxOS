@@ -13,6 +13,12 @@ sudo systemctl mask dnf-makecache.service
 
 sudo dnf remove -y firefox
 sudo dnf remove -y gnome-software
+sudo dnf remove -y mediawriter
+sudo dnf remove -y gnome-boxes
+sudo dnf remove -y connections
+
+
+
 sudo dnf remove libreoffice* -y
 
 rm -rf ~/.config/libreoffice
