@@ -94,7 +94,7 @@ unzip Extensions.zip
 
 gnome-extensions install Compiz@Hermes.zip
 gnome-extensions install AppHide@Lynithdev.zip
-gnome-extensions install BlurShell@Aunetx
+gnome-extensions install BlurShell@Aunetx.zip
 gnome-extensions install DashDock@Micxgx.zip
 gnome-extensions install LogoMenu@Aryan20.zip
 
