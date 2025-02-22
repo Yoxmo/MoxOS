@@ -93,39 +93,6 @@ sudo hostnamectl set-hostname "MoxOS"
 
 echo "[-] Done with Hostnames..."
 
-# --------------------- APPS INSTALL ------------------
-
-# Download and install GNOME extensions
-cd ~
-mkdir tmpext
-cd tmpext
-sudo curl -LO https://github.com/Yoxmo/MoxOS/releases/download/pkg/extents.zip
-unzip extents.zip
-
-echo "[-] Done with move..."
-
-gnome-extensions install Compiz@Hermes.zip
-gnome-extensions install AppHide@Lynithdev.zip
-gnome-extensions install BlurShell@Aunetx.zip
-gnome-extensions install DashDock@Micxgx.zip
-gnome-extensions install LogoMenu@Aryan20.zip
-
-echo "[-] Done with install..."
-
-# Enable the installed extensions
-gnome-extensions enable app-hider@lynith.dev
-gnome-extensions enable logomenu@aryan_k
-gnome-extensions enable compiz-windows-effect@hermes83.github.com
-gnome-extensions enable dash-to-dock@micxgx.gmail.com
-gnome-extensions enable blur-my-shell@aunetx
-
-echo "[-] Done with Apps... Finish PWA and reboot."
-
-cd ~
-rm -r tmpext
-
-
-
 # --------------------- PWA INSTALL -------------------
 
 # Setup applications for PWA
@@ -163,6 +130,39 @@ sudo mv icons /usr/icons
 echo "[-] PWA Script done"
 
 sudo rm -f icons.zip
+
+# --------------------- APP INSTALL -------------------
+
+
+# Download and install GNOME extensions
+cd ~
+mkdir tmpext
+cd tmpext
+sudo curl -LO https://github.com/Yoxmo/MoxOS/releases/download/pkg/extents.zip
+unzip extents.zip
+
+echo "[-] Done with move..."
+
+gnome-extensions install Compiz@Hermes.zip
+gnome-extensions install AppHide@Lynithdev.zip
+gnome-extensions install BlurShell@Aunetx.zip
+gnome-extensions install DashDock@Micxgx.zip
+gnome-extensions install LogoMenu@Aryan20.zip
+
+echo "[-] Done with install..."
+
+# Enable the installed extensions
+gnome-extensions enable app-hider@lynith.dev
+gnome-extensions enable logomenu@aryan_k
+gnome-extensions enable compiz-windows-effect@hermes83.github.com
+gnome-extensions enable dash-to-dock@micxgx.gmail.com
+gnome-extensions enable blur-my-shell@aunetx
+
+echo "[-] Done with Apps... Finish PWA and reboot."
+
+cd ~
+rm -r tmpext
+
 
 echo "[-] PWA Script execution completed. Rebooting now..."
 
