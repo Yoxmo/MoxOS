@@ -9,6 +9,28 @@ rm -rf ~/.local/share/keyrings
 sudo systemctl disable --now dnf-makecache.timer
 sudo systemctl mask dnf-makecache.service
 
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['F10']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['F9']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute "['F8']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings.custom0.name "Brightness Up"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings.custom0.command "brightnessctl set 10%+"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings.custom0.binding "F7"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings.custom1.name "Brightness Down"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings.custom1.command "brightnessctl set 10%-"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings.custom1.binding "F6"
+
+gsettings set org.gnome.shell.keybindings toggle-overview "['F6']"
+
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F5']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+
+echo "Keybindings restored!"
+
+
 # ------------------  APPLICATIONS -------------------
 
 sudo dnf remove -y firefox
@@ -17,9 +39,6 @@ sudo dnf remove -y mediawriter
 sudo dnf remove -y gnome-boxes
 sudo dnf remove -y connections
 sudo dnf remove -y simple-scan
-
-
-
 
 sudo dnf remove libreoffice* -y
 
@@ -109,11 +128,20 @@ echo "[-] Done with Apps... Finsih PWA and reboot."
 
 # --------------------- PWA INSTALL -------------------
 
-sudo -u "$(logname)" google-chrome youtube.com
-sudo -u "$(logname)" google-chrome chatgpt.com
+sudo rm -r  ~/.local/share/applications
+sudo mkdir  ~/.local/share/applications
 
-sudo -u "$(logname)" google-chrome https://chromewebstore.google.com/detail/popup-blocker-strict/aefkmifgmaafnojlojpnekbpbmjiiogg?hl=en
-sudo -u "$(logname)" google-chrome https://chromewebstore.google.com/detail/adblock-for-youtube/cmedhionkhpnakcndndgjdbohmhepckk?hl=en
+sudo cd ~/.local/share/applications
+sudo curl -LO https://github.com/Yoxmo/MoxOS/releases/download/pkg/applications.zip
+
+sudo unzip applications.zip
+
+sudo mkdir /usr/icons
+sudo cd /usr/icons
+curl -LO https://github.com/Yoxmo/MoxOS/releases/download/img/icons.zip
+
+sudo unzip icons.zip
+
 
 echo "[-] PWA Script execution completed. Rebooting now..."
 
