@@ -2,11 +2,11 @@
 
 [-] Steps - connection
 
-# - INTRO
+## - INTRO
 1.) [startup -> remover -> installer]
 
-# - SYS UPT
+## - SYS UPT
 2.) [icons -> pixmaps -> apps]
 
-# - CLEAN UP
+## - CLEAN UP
 3.) [extents (partA.sh) (partB.sh)]
