@@ -6,7 +6,7 @@ echo "Installing Applications"
 # ------------------ APPLICATIONS -------------------
 
 # Install required applications
-sudo dnf install -y gnome-tweaks google-chrome-stable brightnessctl
+sudo dnf install -y gnome-tweaks google-chrome-stable brightnessctl steam
 
 # Grant Flatpak permissions
 flatpak override --user --filesystem=~/.local/share/applications/ --filesystem=~/.local/share/icons
