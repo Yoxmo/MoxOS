@@ -13,11 +13,12 @@ echo "[-] Done with move... installing now"
 
 cd extents
 
-gnome-extensions install Compiz@Hermes.zip
-gnome-extensions install AppHide@Lynithdev.zip
-gnome-extensions install BlurShell@Aunetx.zip
-gnome-extensions install DashDock@Micxgx.zip
-gnome-extensions install LogoMenu@Aryan20.zip
+gnome install app-hider@lynith.dev
+gnome install dash-to-dock@micxgx.gmail.com
+gnome install blur-my-shell@aunetx
+gnome install compiz-windows-effect@hermes83.github.com
+gnome install logomenu@aryan_k
+
 
 echo "[-] Done with install... time to logout and check..."
 
