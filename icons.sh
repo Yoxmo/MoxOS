@@ -16,6 +16,7 @@ sudo curl -LO https://github.com/Yoxmo/MoxOS/releases/download/pkg/wallpaper.zip
 unzip wallpaper.zip
 
 sudo rm -r /usr/share/backgrounds/fedora-workstation
+sudo mkdir /usr/share/backgrounds/fedora-workstation
 
 sudo cp -r ~/Pictures/wallpaper /usr/share/backgrounds/fedora-workstation
 
