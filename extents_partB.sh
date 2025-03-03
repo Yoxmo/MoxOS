@@ -1,5 +1,8 @@
 #!/bin/bash
 gnome-extensions list
+
+gnome-extensions list | xargs -n 1 gnome-extensions enable
+
 # Enable the installed extensions
 gnome-extensions enable app-hider@lynith.dev
 gnome-extensions enable logomenu@aryan_k
