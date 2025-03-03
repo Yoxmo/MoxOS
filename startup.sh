@@ -9,7 +9,12 @@ sudo passwd "$(logname)"
 # Remove keyring files
 rm -rf ~/.local/share/keyrings
 
-sudo sh -c 'echo "IdleActionSec=0" >> /etc/systemd/logind.conf'
+
+
+gsettings set org.gnome.desktop.session idle-delay 300
+gsettings set org.gnome.settings-daemon.plugins.power ambient-dimming false
+
+
 echo "exclude=kernel*" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
 
 
