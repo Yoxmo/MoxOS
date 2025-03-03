@@ -9,6 +9,8 @@ sudo passwd "$(logname)"
 # Remove keyring files
 rm -rf ~/.local/share/keyrings
 
+gsettings set org.gnome.desktop.user-accounts user-full-name "Acer PC"
+sudo chfn -f "New Full Name" username
 
 
 gsettings set org.gnome.desktop.session idle-delay 300
