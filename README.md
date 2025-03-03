@@ -1,4 +1,4 @@
-# MoxOS
+# MoxOS - https://shorturl.at/Ogk4j
 
 [-] Steps - connection
 
