@@ -1,6 +1,8 @@
 #!/bin/bash
 gnome-extensions list
 
+echo "exclude=kernel*" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+
 gnome-extensions list | xargs -n 1 gnome-extensions enable
 
 # Enable the installed extensions
