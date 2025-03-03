@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+git clone https://github.com/yoxmo/MoxOS
+cd MoxOS
+
+
 chmod +x apps.sh 
 chmod +x icons.sh 
 chmod +x keybinds.sh 
